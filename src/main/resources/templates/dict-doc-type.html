@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<html>
+<div th:insert="parts/header :: head"></div>
+<!-- --------------------------------------------------------------- -->
+<body>
+<header th:insert="parts/menu :: navbar"></header>
+
+<h3 class="text-center lh-base p-4 mt-5">Справочник "Типы документов"</h3>
+
+<hr>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Код</th>
+            <th>Наименование</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item, iterStat : ${docsType}"
+            th:style="${iterStat.odd}? 'font-weight: bold;'">
+            <td th:text="${iterStat.index}+1"></td>
+            <td th:text="${item.code}"></td>
+            <td th:text="${item.name}"></td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+<hr>
+
+</main>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+<!-- --------------------------------------------------------------- -->
+</html>

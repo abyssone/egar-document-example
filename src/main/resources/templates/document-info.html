@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<html>
+<div th:insert="parts/header :: head"></div>
+<!-- --------------------------------------------------------------- -->
+<body>
+<header th:insert="parts/menu :: navbar"></header>
+
+<h3 class="text-center lh-base p-4 mt-5">Подробная информация о документе</h3>
+
+<div class="container">
+    <p><b>Название документа: </b><span th:text="${document.title}"></span></p>
+    <p><b>Серия: </b><span th:text="${document.series}"></span></p>
+    <p><b>Номер: </b><span th:text="${document.numeral}"></span></p>
+    <p><b>Тип документа: </b><span th:text="${type.name}"></span></p>
+    <p><b>Комментарий: </b><span th:text="${document.description}"></span></p>
+
+    <hr>
+    <form action="#" th:action="@{'/document/delete/' + ${document.id}}" method="post">
+        <input type="submit" value="Удалить документ"/>
+    </form>
+
+    <a th:href="@{'/document/delete/' + ${document.id}}">Удалить документ</a>
+
+</div>
+<hr>
+</main>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+<!-- --------------------------------------------------------------- -->
+</html>
